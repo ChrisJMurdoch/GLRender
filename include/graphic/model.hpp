@@ -3,8 +3,6 @@
 
 #include <graphic/mesh.hpp>
 
-#include <glm/glm.hpp>
-
 /** VBO mesh model */
 class Model
 {
@@ -30,6 +28,6 @@ public:
 public:
     Model(Mesh &mesh, unsigned int program, USAGE usage = STATIC_DRAW);
     void bufferData(float *vertexData);
-    void render( glm::vec3 position );
+    void render( float x, float y, float z );
     ~Model();
 };

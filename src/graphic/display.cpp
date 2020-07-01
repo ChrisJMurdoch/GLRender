@@ -196,14 +196,14 @@ void loadShaders(const char *vertFilePath, const char *fragFilePath, GLuint &pro
 	{
         char infoLog[512];
         glGetShaderInfoLog(vertShaderID, 512, NULL, infoLog);
-		Log::print(Log::error, infoLog);
+		Log::println(Log::error, infoLog);
 		throw "Vert compilation error";
 	}
     if (!fragSucc)
 	{
         char infoLog[512];
         glGetShaderInfoLog(fragShaderID, 512, NULL, infoLog);
-		Log::print(Log::error, infoLog);
+		Log::println(Log::error, infoLog);
 		throw "Frag compilation error";
 	}
 
@@ -220,7 +220,7 @@ void loadShaders(const char *vertFilePath, const char *fragFilePath, GLuint &pro
 	{
         char infoLog[512];
         glGetProgramInfoLog(programID, 512, NULL, infoLog);
-		Log::print(Log::error, infoLog);
+		Log::println(Log::error, infoLog);
 		throw "Program linking error";
 	}
 	
@@ -242,4 +242,10 @@ GLuint Display::addShaderProg(const char *vertFilePath, const char *fragFilePath
 bool Display::shouldClose()
 {
 	return glfwWindowShouldClose(window);
+}
+
+Display::~Display()
+{
+	for (GLuint prog : programs)
+		glDeleteProgram(prog);
 }

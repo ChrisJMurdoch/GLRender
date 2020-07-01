@@ -11,4 +11,5 @@ public:
     unsigned int addShaderProg(const char *vertFilePath, const char *fragFilePath);
     void addInstance(Instance *instance);
     bool shouldClose();
+    ~Display();
 };

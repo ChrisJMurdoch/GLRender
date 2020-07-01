@@ -7,10 +7,10 @@ class Instance
 {
 protected:
     Model *model;
-    glm::vec3 pos;
+    float x, y, z;
 
 public:
-    Instance( Model *model, glm::vec3 pos );
-    void place( glm::vec3 pos );
+    Instance( Model *model, float x=0, float y=0, float z=0 );
+    void place( float x, float y, float z );
     void render();
 };

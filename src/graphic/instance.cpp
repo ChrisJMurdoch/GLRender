@@ -1,18 +1,22 @@
 
 #include <graphic/instance.hpp>
 
-Instance::Instance( Model *model, glm::vec3 pos )
+Instance::Instance( Model *model, float x, float y, float z )
 {
     this->model = model;
-    this->pos = pos;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
-void Instance::place( glm::vec3 pos )
+void Instance::place( float x, float y, float z )
 {
-    this->pos = pos;
+    this->x = x;
+    this->y = y;
+    this->z = z;
 }
 
 void Instance::render()
 {
-    model->render( pos );
+    model->render( x, y, z );
 }

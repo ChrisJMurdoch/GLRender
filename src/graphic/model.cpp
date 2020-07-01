@@ -49,13 +49,13 @@ void Model::bufferData(float *vertexData)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Model::render( glm::vec3 position )
+void Model::render( float x, float y, float z )
 {
 	// Bind shaders
 	glUseProgram(program);                   
 
 	// Bind uniform
-	glUniformMatrix4fv(	glGetUniformLocation(program, "model"), 1, GL_FALSE, glm::value_ptr( glm::translate( glm::mat4(1.0f), position ) ) );
+	glUniformMatrix4fv(	glGetUniformLocation(program, "model"), 1, GL_FALSE, glm::value_ptr( glm::translate( glm::mat4(1.0f), glm::vec3(x, y, z) ) ) );
 
 	// Render
     glBindVertexArray(VAO);
